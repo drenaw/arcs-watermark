@@ -99,7 +99,13 @@ app.post('/upload',function(request, response) {
 });
 
 app.get('/done',function(req,res){
-	var stat = fs.statSync(__dirname + '/fnal.jpg',function(err,status){});
+	var stat = fs.statSync(__dirname + '/fnal.jpg',function(err,status){
+		var readStream = fs.createReadStream(__dirname + '/fnal.jpg');
+	fs.stat(__dirname + '/fnal.jpg', function (err, stats) {
+   	if (err) {return console.error(err);}
+			 readStream.pipe(res);
+		});
+	});
 	res.writeHead(200, {
         'Content-Type': 'image/jpg',
         'Content-Length': stat.size
