@@ -59,7 +59,7 @@ app.post('/upload',function(request, response) {
 					.in('-page','+0+0')
 					.in(__dirname + '/public/check/uploads/dp.png')
 					.mosaic()
-					.write('fnal.jpg',function(err){if(err)console.log(err);response.redirect('/done');}
+					.write('fnal.jpg',function(err){if(err)console.log(err);response.redirect('/done.jpg');}
 					);
     		console.log('Photo Editing');
 		});
@@ -98,7 +98,7 @@ app.post('/upload',function(request, response) {
   });
 });
 
-app.get('/done',function(req,res){
+app.get('/done.jpg',function(req,res){
 	var stat = fs.statSync(__dirname + '/fnal.jpg',function(err,status){
 		var readStream = fs.createReadStream(__dirname + '/fnal.jpg');
 	fs.stat(__dirname + '/fnal.jpg', function (err, stats) {
