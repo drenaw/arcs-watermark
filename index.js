@@ -106,6 +106,7 @@ app.get('/done',function(req,res){
 			 readStream.pipe(res);
 		});
 	});
+	
 	res.writeHead(200, {
         'Content-Type': 'image/jpg',
         'Content-Length': stat.size
