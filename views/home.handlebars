@@ -1,0 +1,26 @@
+<div class="wcontainer text-center">
+	<div class="jumbotron"><h1>ARCS'17</h1>Watermark</div>
+	<form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST">
+		<label>Upload an image</label><br><br>
+		<input class="white" type="file" accept="image/*" multiple name="photo"><br>
+		<input type="submit" class="btn-primary" name="submit" value="Get Watermark">
+		<span id="status"></span>
+	</form>
+</div>
+<script>
+  $(document).ready(function() {
+     $('#uploadForm').submit(function() {
+        $("#status").empty().text("File is uploading...");
+        $(this).ajaxSubmit({
+            error: function(xhr) {
+          status('Error: ' + xhr.status);
+            },
+            success: function(response) {
+        	console.log(response)
+            $("#status").empty().text(response);
+            }
+    });
+    return false;
+    });    
+});
+</script>
